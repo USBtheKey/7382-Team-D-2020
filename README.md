@@ -6,3 +6,7 @@ Team Arthur Samuel-Hilaire, Ying Fan and Yu Ying Li Wen
 //Could you guys type something then Commit in this file so we know who's on Git or not - thanks :) 
 
 //Arthur is here
+
+
+# Game Summary
+Chucking as many dead babies in a dumpster truck in the span of 30 seconds. 
