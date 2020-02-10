@@ -4,56 +4,85 @@ using UnityEngine;
 
 
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class Shooting_Arrow_Device_Behavior : MonoBehaviour
 {
 
-    public enum FiringMode { Automatic, Trigger, Burst, Random, Homing }
+    #region Fields
+    [SerializeField] private GameObject projectile;
 
-    [HideInInspector] private FiringMode firingMode;
+    //public enum FiringMode { Automatic, Trigger, Burst, Random, Homing }
+    //[HideInInspector] private FiringMode firingMode;
+    [HideInInspector][SerializeField] private int selectedFiringMode;
+    
+    //Invoke Repeating
+    [HideInInspector][SerializeField] private float delay;
+    [HideInInspector][SerializeField] private float repeatRate;
 
+    [HideInInspector][SerializeField] private float burstDelay;
 
-    [Range(1f, 5f)]
-    [SerializeField] private int burstShot;
+    [Range(1f,20f)]
+    [SerializeField] private float arrowSpeed;
+    #endregion
 
-    public FiringMode GetFiringMode => firingMode;
-
-    public int carrot;
+    #region Propreties
+    //public FiringMode GetFiringMode => firingMode;
+    public float Delay { get => delay; set => delay = value; }
+    public float RepeatRate { get => repeatRate; set => repeatRate = value; }
+    public int SelectedFiringMode { get => selectedFiringMode; set => selectedFiringMode = value; }
+    public float BurstDelay { get => burstDelay; set => burstDelay = value; }
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        switch (firingMode)
+
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+
+        switch (selectedFiringMode)
         {
-            case FiringMode.Automatic:
-                InvokeRepeating("Automatic", 0f, 1f);
+            case 1: // Automatic
+                InvokeRepeating("Fire", delay, repeatRate);
                 break;
-            case FiringMode.Trigger:
+
+            case 2: // Trigger
+                this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
                 break;
-            case FiringMode.Burst:
-                
+
+            case 3: // Burst
+                //shoot 3 arrows in succession
+                InvokeRepeating("Burst", delay, repeatRate);
                 break;
-            case FiringMode.Random:
-                
+
+            case 4: //Random
+                InvokeRepeating("Fire", Random.Range(0f,5f), Random.Range(0f,5f));
                 break;
-            case FiringMode.Homing:
+
+            case 5: // Homing
                 break;
 
         }
     }
-
-
-    private void Automatic()
+    private void Burst()
     {
 
+        InvokeRepeating("Fire", burstDelay, 1f);
+   
     }
+
     private void Fire()
     {
-
+        projectile.GetComponent<Arrow_Behavior>().ArrowSpeed = this.arrowSpeed;
+        Instantiate(projectile, this.gameObject.transform);
+        
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        //When enter trigger shoot
+        Fire();
     }
 
 }
