@@ -29,22 +29,20 @@ public class Platform_Behavior : MonoBehaviour
 
     private void MovePlatform()
     {
-        while (true)
+        
+        for (int i = 0; i < waypoints.Length; i++)
         {
-            for (int i = 0; i < waypoints.Length; i++)
+            while (!HasArrived())
             {
                 Vector2 direction = (waypoints[i].position - this.gameObject.transform.position).normalized;
                 gameObject.transform.Translate(direction * speed * Time.deltaTime);
                 Debug.Log(i);
-            }
-
-            for (int i = waypoints.Length; i > 0; i--)
-            {
-                //Vector2 direction = (waypoints[i].position - this.gameObject.transform.position).normalized;
-                //gameObject.transform.Translate(waypoints[i].position * speed * Time.deltaTime);
-            }
+            }    
         }
-        
     }
     
+    private bool HasArrived()
+    {
+        return true;
+    }
 }

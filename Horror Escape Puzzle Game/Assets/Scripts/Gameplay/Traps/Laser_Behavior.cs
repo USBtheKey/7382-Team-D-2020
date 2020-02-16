@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Laser_Behavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Animator anim;
+    private void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void Disable() => anim.enabled = false;
 }
