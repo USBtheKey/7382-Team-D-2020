@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using UnityEngine; // for debug.log
 using UnityEditor;
 
 
@@ -14,48 +14,39 @@ public class Custom_Shooting_Device_Editor : Editor
 
     public void OnEnable()
     {
-        repeatRate = serializedObject.FindProperty("RepeatRate");
-        delay = serializedObject.FindProperty("Delay");
-        burstDelay = serializedObject.FindProperty("BurstDelay");
-        firingMode = serializedObject.FindProperty("SelectedFiringMode");
+        
+        repeatRate = serializedObject.FindProperty("repeatRate");
+        delay = serializedObject.FindProperty("delay");
+        burstDelay = serializedObject.FindProperty("burstDelay");
+        firingMode = serializedObject.FindProperty("firingMode");
     }
 
     public override void OnInspectorGUI()
     {
+        serializedObject.Update();
 
-        //Declarations
         base.OnInspectorGUI();
-
+        
         Shooting_Arrow_Device_Behavior myScript = target as Shooting_Arrow_Device_Behavior;
 
-        
-        string[] firingMode = new string[] { "None", "Automatic", "Trigger", "Burst", "Random", "Homing" }; 
-        //Declarations End
-        
-        myScript.SelectedFiringMode = EditorGUILayout.Popup("Firing Mode", myScript.SelectedFiringMode, firingMode);
-        int mode = myScript.SelectedFiringMode;
+        string[] firingModeLabels = new string[] { "None", "Automatic", "Trigger", "Burst", "Random", "Homing", "Trigger Homing" };  
+        firingMode.enumValueIndex = EditorGUILayout.Popup("Firing Mode", (int)myScript.PropFiringMode, firingModeLabels);
+
 
         //Display group when choosen
+        int mode = firingMode.enumValueIndex;
 
-        //door.open = EditorGUILayout.Toggle(...), 
-        //serializedObject.FindProperty("open").boolValue = EditorGUILayout.Toggle(...)
-
-        if (mode == 1 || mode == 3 || mode == 4)
+        if (mode == 1 || mode == 3 || mode == 5 || mode == 6)
         {
             using (var group = new EditorGUILayout.FadeGroupScope(1f))
             {
-               EditorGUI.indentLevel++;
-               //serializedObject.FindProperty("RepeatRate").floatValue = EditorGUILayout.Slider("Repeat Rate", myScript.RepeatRate, 0, 10);
-
-               myScript.RepeatRate = EditorGUILayout.Slider("Repeat Rate", myScript.RepeatRate, 0, 10);
-               myScript.Delay = EditorGUILayout.Slider("Delay", myScript.Delay, 0, 10);
-               if(mode == 3) myScript.BurstDelay= EditorGUILayout.Slider("Burst Delay", myScript.BurstDelay, 0, 10);
+                EditorGUI.indentLevel++;
+                repeatRate.floatValue = EditorGUILayout.Slider("Delay between shots", repeatRate.floatValue, 1, 0);
+                delay.floatValue = EditorGUILayout.Slider("Initial Delay", delay.floatValue, 0, 10);
+                if(mode == 3) burstDelay.floatValue = EditorGUILayout.Slider("Burst Delay", burstDelay.floatValue, 0, 10);
             }
-            //TODO fix values are not saving;   
-            //shits not saving WTFFFFFFFFFFFFF being like 3 fucking hours on this garbo fuck!
+            //Values doesn't change during gameplay;
         }
-        serializedObject.Update();
         serializedObject.ApplyModifiedProperties();
-        
     }
 }

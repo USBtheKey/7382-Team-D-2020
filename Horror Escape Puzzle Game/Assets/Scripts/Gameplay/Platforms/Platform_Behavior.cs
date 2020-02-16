@@ -40,8 +40,8 @@ public class Platform_Behavior : MonoBehaviour
 
             for (int i = waypoints.Length; i > 0; i--)
             {
-                Vector2 direction = (waypoints[i].position - this.gameObject.transform.position).normalized;
-                gameObject.transform.Translate(waypoints[i].position * speed * Time.deltaTime);
+                //Vector2 direction = (waypoints[i].position - this.gameObject.transform.position).normalized;
+                //gameObject.transform.Translate(waypoints[i].position * speed * Time.deltaTime);
             }
         }
         

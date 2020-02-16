@@ -9,6 +9,6 @@ public class Player_Behavior : MonoBehaviour, IDeath
 
     public void Death()
     {
-
+        Debug.Log("player death");
     }
 }

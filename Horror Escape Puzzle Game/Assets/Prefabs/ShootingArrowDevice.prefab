@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 4889511437982289961}
   - component: {fileID: 4889511437982289958}
   - component: {fileID: 4889511437982289959}
-  - component: {fileID: 4524106706635701134}
   m_Layer: 0
   m_Name: ShootingArrowDevice
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,20 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 4533067963636316937, guid: c74dac7056004404281746dce67a7cec,
     type: 3}
-  selectedFiringMode: 0
+  firingMode: 0
   delay: 0
-  repeatRate: 0
-  burstDelay: 0
+  repeatRate: 3
+  burstDelay: 1
   arrowSpeed: 1
---- !u!114 &4524106706635701134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4889511437982289962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d446b9de5c3e2f84ab360d72e0b23c5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
