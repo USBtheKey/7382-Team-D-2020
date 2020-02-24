@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Laser_Behavior : MonoBehaviour
 {
-    private Animator anim;
-    private void Start()
+
+    [SerializeField] private GameObject[] assetsToTurnOff;
+
+    public void Disable()
     {
-        anim = GetComponent<Animator>();
+        foreach(GameObject obj in assetsToTurnOff)
+        {
+            obj.SetActive(false);
+        }
     }
-    public void Disable() => anim.enabled = false;
 }
