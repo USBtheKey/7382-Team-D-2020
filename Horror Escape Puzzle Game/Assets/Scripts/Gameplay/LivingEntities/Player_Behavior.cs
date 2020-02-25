@@ -5,18 +5,16 @@ using UnityEngine.Events;
 
 public class Player_Behavior : MonoBehaviour, IDeath
 {
-    public UnityEvent OnDeath;
+    private UnityEvent OnDeath = new UnityEvent();
 
     private GameMenuManager gmm;
 
-    private void Awake()
-    {
-        gmm = GameMenuManager.GetInstance;
-    }
-
     private void Start()
     {
+        gmm = GameMenuManager.GetInstance;
+
         OnDeath.AddListener(gmm.OnPlayerDeath);
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -35,7 +33,7 @@ public class Player_Behavior : MonoBehaviour, IDeath
 
     private void OnDestroy()
     {
-        //this.gameObject.transform.Find("Main Camera").parent = null;
+        //BUG: Might cause to have 2 players and cameras on the screen;
         OnDeath.Invoke();
     }
 }

@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Camera_Behavior : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    private Camera cam;
+    private AudioListener audioS;
+    
+
     void Start()
     {
-        
+        cam = GetComponent<Camera>();
+        audioS = GetComponent<AudioListener>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
+
+    public void FindandAttachOnPlayer()
+    {
+        //this.enabled = audioS.enabled = cam.enabled = true;
+    }
+
 }

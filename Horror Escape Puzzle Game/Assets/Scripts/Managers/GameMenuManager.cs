@@ -50,8 +50,8 @@ public class GameMenuManager : MonoBehaviour
     public void OnPlayerDeath()
     {
         gm.RespawnPlayer();
-        //gm.PauseGame();
-        //deathScreen.SetActive(true);
+
+        deathScreen.SetActive(true);
     }
 
 

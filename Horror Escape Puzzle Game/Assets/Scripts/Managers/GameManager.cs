@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance = null;
-
+    //private Camera_Behavior cb;
     private bool isGamePaused = false;
+    UnityEvent OnPlayerRespawn = new UnityEvent();
+
 
     private void Awake()
     {
@@ -19,7 +22,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        //cb = Camera_Behavior.GetInstance;
+
+        //OnPlayerRespawn.AddListener(cb.FindandAttachOnPlayer);
     }
 
     private void OnDestroy()
@@ -37,9 +42,10 @@ public class GameManager : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        if(SaveLoadCheckpoint.GetLastCheckpoint != null)
+        if (SaveLoadCheckpoint.GetLastCheckpoint != null)
         {
             SaveLoadCheckpoint.GetLastCheckpoint.gameObject.GetComponent<SaveLoadCheckpoint>().Respawn();
+            OnPlayerRespawn.Invoke();
         }
     }
 
