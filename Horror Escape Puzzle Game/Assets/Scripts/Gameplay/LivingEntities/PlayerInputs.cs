@@ -7,7 +7,6 @@ public class PlayerInputs : MonoBehaviour
 {
     private CharacterController2D character;
     private bool jump = false;
-    private bool crouch = false;
     private float h = 0;
 
     public void OnMove(InputAction.CallbackContext context)
@@ -32,7 +31,7 @@ public class PlayerInputs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        character.Move(h, crouch, jump);
+        character.Move(h, jump);
         jump = false;
     }
 }

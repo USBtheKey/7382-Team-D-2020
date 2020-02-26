@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 476149130}
   - component: {fileID: 476149129}
   - component: {fileID: 476149131}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform_Tilemap
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -9298,18 +9298,7 @@ MonoBehaviour:
     m_ActionId: 3f60b098-f728-439f-8904-0457e42593ff
     m_ActionName: Player/Jump[/Keyboard/w,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1948549535}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: fef42707-3a9d-4d37-9d57-ec7d60a3d438
     m_ActionName: Player/Bomb[/Keyboard/q,/Keyboard/e,/XInputControllerWindows/leftShoulder,/XInputControllerWindows/rightShoulder]
   - m_PersistentCalls:
@@ -9701,19 +9690,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_JumpForce: 400
-  m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_GroundCheck: {fileID: 1273757850}
   m_CeilingCheck: {fileID: 424656176}
-  m_CrouchDisableCollider: {fileID: 0}
   OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &1948549543 stripped
@@ -9897,6 +9881,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1232439465686061057, guid: ae22883a94cff2848aa094b8ca604b24,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1232439465686061066, guid: ae22883a94cff2848aa094b8ca604b24,
         type: 3}
       propertyPath: m_Name
@@ -9966,6 +9955,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2706034863418381092, guid: 3786ea85bba93064e96ed3ba77fb79d5,
+        type: 3}
+      propertyPath: visible
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2706034863418381095, guid: 3786ea85bba93064e96ed3ba77fb79d5,
         type: 3}
       propertyPath: m_Name

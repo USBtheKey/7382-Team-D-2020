@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SaveLoad : MonoBehaviour
 {
-    private Vector2 lastCheckpoint;
+    private Transform lastCheckpoint;
     [SerializeField] GameObject Player;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class SaveLoad : MonoBehaviour
     {
         if (collision.tag == "Waypoint")
         {
-            lastCheckpoint = collision.transform.position;
+            lastCheckpoint = collision.transform;
         }
     }
 
@@ -29,7 +29,7 @@ public class SaveLoad : MonoBehaviour
     public void LoadLastCheckpoint()
     {
         //SceneManager.LoadScene(PlayerPrefs.GetString("Last Checkpoint"));
-        Player.transform.position = lastCheckpoint;
+        Instantiate(Player, lastCheckpoint.position, Quaternion.identity);
     }
     // Update is called once per frame
     void Update()
