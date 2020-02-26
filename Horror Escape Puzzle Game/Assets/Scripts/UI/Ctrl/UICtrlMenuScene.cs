@@ -11,6 +11,6 @@ public class UICtrlMenuScene : MonoBehaviour
     public void OnCreditBtnClick()
     {
         //todo sceneloader
-        SceneManager.LoadScene("CreditSetion");
+        SceneManager.LoadScene("CreditsSection");
     }
 }
